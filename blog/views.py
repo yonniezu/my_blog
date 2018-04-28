@@ -1,13 +1,18 @@
 from django.shortcuts import render
-
+from . models import Comment 
 # Create your views here.
 def home_page(request):
-	if request.method == 'POST' : 
-		comment = request.POST.get('conmment')
-		user = request.POST.get("username")
+    if request.method == 'POST' : 
+        our_comment = request.POST.get('conmment')
+        our_user = request.POST.get("username")
+        comment_obj = Comment.objects.create 
 
-		print(comment * 10)
-		return render(request, 'blog/home_page.html', {'comment': comment, 'username': user})
+        comment=our_comment
+        user+our_user
 
-	return render(request, 'blog/home_page.html')
-	
+
+        
+        return render(request, 'blog/home_page.html', {'comment': comment_obj,})
+
+    return render(request, 'blog/home_page.html')
+    
